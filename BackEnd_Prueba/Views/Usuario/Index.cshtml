@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BackEnd_Prueba.Models.usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Lista de usuarios</h3>
+
+<p>
+    @Html.ActionLink("Crear nuevo usuario", "Create")
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Nombre
+            </th>
+            <th>Apellidos
+            </th>
+            <th>Teléfono
+            </th>
+            <th>Dirección
+            </th>
+            <th class="danger options">Opciones
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.direccion)
+                </td>
+                <td class="options">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Detalle", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

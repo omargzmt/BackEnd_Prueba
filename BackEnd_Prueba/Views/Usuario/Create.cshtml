@@ -1,0 +1,71 @@
+﻿@model BackEnd_Prueba.Models.usuario
+
+@{
+    ViewBag.Title = "Nuevo usuario";
+}
+<script type="text/javascript">
+    function valida(s) {
+
+        if (document.getElementById('TxtNombre').value == '') {
+            alert('Debe tener un nombre el registro');
+            return false;
+        }
+
+        return true;
+    };
+</script>
+
+<h3>Crear nuevo usuario</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            <p class="EtiquetasTitulos">Nombre:</p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.nombre, new { @class="cajas", @id = "TxtNombre"})
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            <p class="EtiquetasTitulos">Apellidos</p>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.apellidos, new { @class="cajas"})
+            @Html.ValidationMessageFor(model => model.apellidos)
+        </div>
+
+        <div class="editor-label">
+            <p class="EtiquetasTitulos">Teléfono</p>
+        </div>
+        <div class="editor-field">            
+            @Html.TextBoxFor(model => model.telefono, new { @class="cajas"})
+            @Html.ValidationMessageFor(model => model.telefono)
+        </div>
+
+        <div class="editor-label">
+            <p class="EtiquetasTitulos">Dirección</p>
+        </div>
+        <div class="editor-field">            
+            @Html.TextAreaFor(model => model.direccion, new { @class="area"})
+            @Html.ValidationMessageFor(model => model.direccion)
+        </div>
+
+        <p class="btnSubmit">
+            <input type="submit" value="Crear" onclick="return valida(this);" class="btn btn-default btn-lg"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Regresar al inicio", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

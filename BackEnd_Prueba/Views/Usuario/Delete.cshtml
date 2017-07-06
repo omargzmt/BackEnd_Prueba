@@ -1,0 +1,47 @@
+﻿@model BackEnd_Prueba.Models.usuario
+
+@{
+    ViewBag.Title = "Borrar usuario";
+}
+
+<h3>Borrar usuario</h3>
+
+<h3>¿Está usted seguro que quiere borrar el siguiente usuario?</h3>
+<fieldset>
+    <legend></legend>
+
+    <div class="display-label">
+         <p class="EtiquetasTitulos">Nombre:</p>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+         <p class="EtiquetasTitulos">Apellidos</p>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.apellidos)
+    </div>
+
+    <div class="display-label">
+         <p class="EtiquetasTitulos">Teléfono</p>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefono)
+    </div>
+
+    <div class="display-label">
+         <p class="EtiquetasTitulos">Dirección</p>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.direccion)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p class="btnSubmit">
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+        @Html.ActionLink("Cancelar", "Index")
+    </p>    
+}
